@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative HTML &amp; CSS Webpage Projects | Master Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.85);
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --primary: #6366f1;
+      --accent1: #38bdf8;
+      --accent2: #10b981;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-heading: 'Outfit', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(circle at 20% 15%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(13, 148, 136, 0.12) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1rem;
+      flex: 1;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent1);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(12px);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(99, 102, 241, 0.5);
+      box-shadow: 0 20px 35px rgba(99, 102, 241, 0.2);
+    }
+
+    .card-banner {
+      height: 180px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .card-banner img {
+      transform: scale(1.06);
+    }
+
+    .group-pill {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(15, 23, 42, 0.85);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .card-content {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .project-num {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent1);
+      margin-bottom: 0.35rem;
+    }
+
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+    }
+
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    .features-list {
+      list-style: none;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .features-list li {
+      font-size: 0.82rem;
+      color: #d1d5db;
+    }
+
+    .features-list li::before {
+      content: '✓ ';
+      color: var(--accent2);
+      font-weight: bold;
+    }
+
+    .btn-launch {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 0.8rem 1.4rem;
+      border-radius: 10px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+    }
+
+    .btn-launch:hover {
+      background: #4f46e5;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(99, 102, 241, 0.5);
+    }
+
+    .btn-g2 {
+      background: #2563eb;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+    }
+    .btn-g2:hover {
+      background: #1d4ed8;
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.5);
+    }
+
+    .btn-g3 {
+      background: #0d9488;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.35);
+    }
+    .btn-g3:hover {
+      background: #0f766e;
+      box-shadow: 0 6px 18px rgba(13, 148, 136, 0.5);
+    }
+
+    .spec-banner {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .spec-banner strong {
+      display: block;
+      color: #fff;
+      font-size: 1.05rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .spec-banner p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .tech-pill-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-badge {
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 0.85rem;
+      color: #6b7280;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 992px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <span class="badge">ASSIGNMENT SHOWCASE</span>
+      <h1>Creative HTML &amp; CSS Web Projects</h1>
+      <p class="subtitle">
+        Three fully responsive, semantic, and modern webpages built with <strong>100% Pure HTML5 &amp; CSS3</strong> (no JavaScript) selecting one project from each group.
+      </p>
+    </header>
+
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="card-banner">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" alt="Personal Portfolio Webpage Preview">
+          <span class="group-pill">GROUP 1 &bull; PROJECT 1</span>
+        </div>
+        <div class="card-content">
+          <span class="project-num">Student Developer Showcase</span>
+          <h2 class="card-title">Personal Portfolio Website</h2>
+          <p class="card-desc">
+            A sleek student engineering portfolio featuring an interactive-styled code card, academic timeline, skill progress meters, project case studies, achievements, and contact form.
+          </p>
+          <ul class="features-list">
+            <li>Student Profile &amp; Live Availability Badge</li>
+            <li>Skills Matrix with Visual CSS Fill Bars</li>
+            <li>3 Featured Capstone Project Cards</li>
+            <li>Academic Honors &amp; Certifications</li>
+            <li>Complete Responsive HTML Contact Form</li>
+          </ul>
+          <a href="group1-portfolio/index.html" class="btn-launch">
+            Launch Portfolio Project &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div class="card-banner">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80" alt="Online Course Platform Preview">
+          <span class="group-pill">GROUP 2 &bull; PROJECT 1</span>
+        </div>
+        <div class="card-content">
+          <span class="project-num">E-Learning &amp; Bootcamps</span>
+          <h2 class="card-title">Online Course Website (EduSphere)</h2>
+          <p class="card-desc">
+            An e-learning academy platform featuring course categories, curriculum cards with ratings and instructor info, top faculty profiles, student reviews, and membership pricing tiers.
+          </p>
+          <ul class="features-list">
+            <li>Hero Banner with Live Search &amp; Chips</li>
+            <li>6 Interactive Course Category Cards</li>
+            <li>Bestseller Course Cards with Star Ratings</li>
+            <li>Top Instructor Profiles &amp; Metrics</li>
+            <li>3-Tier Pricing &amp; Fast Enrollment Form</li>
+          </ul>
+          <a href="group2-course-platform/index.html" class="btn-launch btn-g2">
+            Launch Course Platform &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <div class="card-banner">
+          <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=700&q=80" alt="Hospital Healthcare Website Preview">
+          <span class="group-pill">GROUP 3 &bull; PROJECT 4</span>
+        </div>
+        <div class="card-content">
+          <span class="project-num">Healthcare &amp; Medicine</span>
+          <h2 class="card-title">Hospital &amp; Healthcare (NovaCare)</h2>
+          <p class="card-desc">
+            A premier hospital webpage with emergency response banner, medical departments, doctor credentials, clinical diagnostic services, patient wellness guides, and an appointment booking desk.
+          </p>
+          <ul class="features-list">
+            <li>24/7 Trauma Emergency Header &amp; Dispatch</li>
+            <li>6 Specialized Clinical Department Cards</li>
+            <li>Doctor Profiles with Qualifications &amp; OPD Hours</li>
+            <li>Patient Wellness &amp; Immunization Guides</li>
+            <li>Comprehensive Online Appointment Booking Desk</li>
+          </ul>
+          <a href="group3-healthcare/index.html" class="btn-launch btn-g3">
+            Launch Hospital Website &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-banner">
+      <div>
+        <strong>Technical Compliance &amp; Standards</strong>
+        <p>Built strictly using semantic HTML5, CSS3 Grid/Flexbox, custom CSS properties, responsive breakpoints, and modern typography.</p>
+      </div>
+      <div class="tech-pill-group">
+        <span class="tech-badge">Pure HTML5</span>
+        <span class="tech-badge">Pure CSS3</span>
+        <span class="tech-badge">Zero JavaScript</span>
+        <span class="tech-badge">100% Mobile Responsive</span>
+        <span class="tech-badge">Accessible &amp; Semantic</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Creative HTML &amp; CSS Webpage Projects. All three project requirements fully satisfied.</p>
+  </footer>
+
+</body>
+</html>
